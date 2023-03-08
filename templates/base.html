@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+	  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Welcome to WordLadder</title>
+  </head>
+  <body>
+  <div class="container" id = "main_container">
+    {% for message in get_flashed_messages() %}
+    <div class="toast" data-autohide="false" id = "toastMessages" name = "messageAlert">
+      <div class="toast-body" id="txtToast">
+        {{ message }}
+      </div>	
+    </div>
+    <!--
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+         {{ message }}
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         </div>-->
+    {% endfor %}
+    {% block content %} {% endblock %}
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+
+
+	function disablePreviousbutton()
+	{
+	if (document.getElementById("btnPrevious").getAttribute("href")== '/0')
+		{
+		document.getElementById("btnPrevious").setAttribute("disabled","disabled");
+		}
+	else 
+		{
+		document.getElementById("btnPrevious").removeAttribute('disabled');
+		}
+	}
+  function checkWord()
+  {
+    if(document.getElementsByName("messageAlert").length==0) {
+        document.getElementById("inputWord").value="";
+    }
+    else
+    {
+    	document.getElementById("inputWord").focus();
+    	const value =  document.getElementById("inputWord").value;
+    	document.getElementById("inputWord").value="";
+    	document.getElementById("inputWord").value = value
+    }
+  }
+  
+  function scrollLadder()
+  {
+    const element = document.getElementById("wordListId");
+	element.scrollIntoView(false);
+  }
+
+  function showToasts(){
+     $('.toast').toast('show');
+  }
+
+  $(document).ready(function(){
+    scrollLadder();
+    checkWord();
+    showToasts();
+    disablePreviousbutton();
+  });
+</script>
+
+  </body>
+</html>

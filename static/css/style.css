@@ -1,0 +1,57 @@
+body {
+  background-color: lightblue;
+}
+
+hr{
+  border: 1px solid;
+}
+
+h1 {
+    border: 2px #eee solid;
+    color: brown;
+    text-align: center;
+    padding: 10px;
+}
+.wordContainer{
+   	overflow:scroll; 
+    height:400px;
+    width:140px;
+    border-left: thick double;
+    border-right: thick double;
+    margin: -50
+}
+
+.wordList{   
+	overflow:scroll;       
+    border-top:none;
+    border-bottom:none;
+    text-align: center;
+}
+.wordView{
+	display:flex; 
+ flex-direction: column;
+ align-items: center;  
+ }
+
+.alert alert-warning{
+	position:absolute;
+}
+
+.toast {
+  position: absolute;
+  z-index: 99;
+  border: 1px solid;
+  color: red;
+}
+ 
+.btn-ladder {
+    background-color: #dddddd !important;
+    border-radius: 35;
+    border: 3px solid yellow !important;
+    box-sizing: border-box !important;
+    border-color: crimson;
+    color:black;
+}
+ 
+
+ 

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 id = 'txtTitle' class="text-center">Welcome to WordLadder</h2>
+    <div id="word-container" class="align-middle text-justify">
+  <div class="card border border-2 border-primary rounded-lg ">
+      <div class="card-header">
+      <div class="row">
+     <div class="col-sm text-left">
+          <a class ='btn pull-left btn-ladder' href="{{ url_for('index',word_id=word['id']-1)}}" button type="button" id="btnPrevious">Previous</a>
+       </div>
+        <div class="col-sm text-right">
+          <a class ='btn pull-right btn-ladder' href="{{ url_for('index',word_id=word['id']+1)}}" button type="button" id="btnNext">Next</a>
+        
+         </div>
+         </div>
+         </div>
+        <div class="wordView">
+     <h2 id = "txtWordFrom">{{ word['from'] }}</h2>
+     	<div class="wordContainer" id="wordContainerId">
+     		<div class="wordList" id="wordListId"> 
+         		{% for i in guessList %}
+    				<h2>{{i}}</h2>
+    			<hr />
+				{% endfor %}
+			</div>
+			</div>
+			<div class='guessContainer'>
+        		<form method="post" action="">
+        			<span class="btn-group">
+        				<input type="text" name="word" id="inputWord"
+               					placeholder="type here" class="form-control guessWord"
+               					value="{{request.form['word']}}" 
+               					maxlength=4
+               					size=10 
+               					autofocus />
+               			<button type="submit" class="btn btn-ladder" id="btnSubmit">&#9166;</button>
+               		</span>
+    			</form>
+   			</div>
+		
+       	<h2 id = "txtWordTo">{{word['to']}}</h2>
+       	</div>
+       	</div></div>
+{% endblock %}
